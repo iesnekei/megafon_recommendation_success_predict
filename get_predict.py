@@ -42,6 +42,7 @@ def get_predict(file:str):
         print("Didn't find Unnamed coulumn")
     
     df = df.merge(info, on='id', how='left')
+    df = df.drop_duplicates(subset=['id', 'vas_id', 'buy_time_x'], keep='first')
 
     user_id = df.id.tolist()
     buy_time = df.buy_time_x.tolist()
